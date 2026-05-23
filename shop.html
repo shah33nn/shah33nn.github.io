@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Wear Some Flowers</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       Wear Some Flowers - Shop Layout Styles
+       ========================================================================== */
+
+    :root {
+      --warm-canvas: #FDFBF7;
+      --card-bg: #FFFFFF;
+      --text-dark: #3E362E;
+      --botanical-green: #7A9C59;
+      --botanical-dark: #5A7A3A;
+      --dusty-blue: #AEC6CF;
+      --petal-peach: #F4D3C9;
+      --border-color: #EAE6DF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--warm-canvas);
+      color: var(--text-dark);
+      font-family: 'Libre Baskerville', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Typography --- */
+    h1, h2, h3, .brand-logo {
+      font-family: 'Lora', serif;
+      font-weight: 500;
+      color: var(--botanical-dark);
+    }
+
+    /* --- Navigation --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      background-color: transparent;
+      position: relative;
+      z-index: 10;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand-logo {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: var(--botanical-green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--botanical-green);
+    }
+
+    /* --- Header / Hero --- */
+    header.shop-header {
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    header.shop-header h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    header.shop-header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* --- Product Grid --- */
+    main {
+      flex: 1;
+      padding: 2rem 3rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
+    }
+
+    /* --- Product Cards --- */
+    .product-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.2rem;
+      box-shadow: 4px 4px 0px rgba(174, 198, 207, 0.3); /* Soft dusty blue shadow */
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    /* Staggering the card loading animations */
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.3s; }
+    .product-card:nth-child(3) { animation-delay: 0.5s; }
+    .product-card:nth-child(4) { animation-delay: 0.7s; }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 8px 8px 0px var(--petal-peach);
+    }
+
+    /* Whimsical Image Placeholders */
+    .image-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .img-1 { background: linear-gradient(135deg, #fdfbf7, var(--dusty-blue)); }
+    .img-2 { background: linear-gradient(135deg, #fdfbf7, var(--petal-peach)); }
+    .img-3 { background: linear-gradient(135deg, #fdfbf7, var(--botanical-green)); }
+    .img-4 { background: linear-gradient(135deg, #fdfbf7, #EAE6DF); }
+
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .product-price {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      color: var(--botanical-green);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Add to Cart Button */
+    .add-to-cart {
+      margin-top: auto;
+      background-color: transparent;
+      color: var(--botanical-dark);
+      border: 2px solid var(--botanical-green);
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      padding: 0.8rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .add-to-cart:hover {
+      background-color: var(--botanical-green);
+      color: var(--warm-canvas);
+    }
+
+    /* --- Footer --- */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--botanical-green);
+      border-top: 1px solid var(--border-color);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* --- Animations --- */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Floating Background Orbs */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 0.25;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .blob-1 { width: 400px; height: 400px; background-color: var(--petal-peach); top: 10%; left: -10%; }
+    .blob-2 { width: 500px; height: 500px; background-color: var(--botanical-green); top: 50%; right: -15%; animation-delay: -5s; }
+  </style>
+</head>
+<body>
+
+  <div class="floating-elements">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <nav>
+    <a href="index.html" class="brand-logo">wear some flowers</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="https://wearsomeflowers.substack.com">Stories</a>
+      <a href="https://support.wearsomeflowers.com">Support</a>
+    </div>
+  </nav>
+
+  <header class="shop-header">
+    <h1>The Vintage Rack</h1>
+    <p>Pieces with a past, ready for a new story. Explore our curated collection of whimsical thrifts and nostalgic finds.</p>
+  </header>
+
+  <main>
+    <div class="product-grid">
+      
+      <div class="product-card">
+        <div class="image-placeholder img-1">🧶</div>
+        <div class="product-info">
+          <h2 class="product-title">Mossy Knit Oversized Cardigan</h2>
+          <span class="product-price">$45.00</span>
+          <button class="add-to-cart">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="image-placeholder img-2">👗</div>
+        <div class="product-info">
+          <h2 class="product-title">Dusty Rose Silk Slip Dress</h2>
+          <span class="product-price">$62.00</span>
+          <button class="add-to-cart">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="image-placeholder img-3">🌸</div>
+        <div class="product-info">
+          <h2 class="product-title">Embroidered Linen Midi</h2>
+          <span class="product-price">$58.00</span>
+          <button class="add-to-cart">Add to Basket</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="image-placeholder img-4">👜</div>
+        <div class="product-info">
+          <h2 class="product-title">Vintage Worn Leather Satchel</h2>
+          <span class="product-price">$85.00</span>
+          <button class="add-to-cart">Add to Basket</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Time to enjoy a cup of coffee. ☕</p>
+  </footer>
+
+  <script>
+    function initFreshdesk() {
+      window.fdWidget.init({
+        token: "01KS7PMPC4NYYBRV93TQM6A0CF",
+        host: "https://wearsomeflowers.freshdesk.com",
+        widgetId: "01KS7PMRED26P2GERV3TKZ46F8"
+      });
+    }
+    function initialize(i,t){var e;i.getElementById(t)?initFreshdesk():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wearsomeflowers.freshdesk.com/webchat/js/widget.js",e.onload=initFreshdesk,i.head.appendChild(e))}function initiateCall(){initialize(document,"Freshdesk-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
+  </script>
+
+</body>
+</html>
