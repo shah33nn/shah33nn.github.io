@@ -203,6 +203,16 @@
   <footer>
     <p>Time to enjoy a cup of coffee. ☕</p>
   </footer>
+<script>
+function initFreshdesk() {
+  window.fdWidget.init({
+    token: "01KS7PMPC4NYYBRV93TQM6A0CF",
+    host: "https://wearsomeflowers.freshdesk.com",
+    widgetId: "01KS7PMRED26P2GERV3TKZ46F8"
+  });
+}
 
+function initialize(i,t){var e;i.getElementById(t)?initFreshdesk():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wearsomeflowers.freshdesk.com/webchat/js/widget.js",e.onload=initFreshdesk,i.head.appendChild(e))}function initiateCall(){initialize(document,"Freshdesk-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
+</script>
 </body>
 </html>
