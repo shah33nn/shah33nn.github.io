@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wear Some Flowers | The Conservatory</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       Wear Some Flowers - Landing Page Styles
+       ========================================================================== */
+
+    :root {
+      --warm-canvas: #FDFBF7;
+      --text-dark: #3E362E;
+      --botanical-green: #7A9C59;
+      --botanical-dark: #5A7A3A;
+      --dusty-blue: #AEC6CF;
+      --petal-peach: #F4D3C9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--warm-canvas);
+      color: var(--text-dark);
+      font-family: 'Libre Baskerville', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Typography --- */
+    h1, h2, h3, .brand-logo {
+      font-family: 'Lora', serif;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--botanical-dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+      color: var(--text-dark);
+    }
+
+    /* --- Layout --- */
+    header {
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand-logo {
+      font-size: 1.5rem;
+      color: var(--botanical-green);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    /* --- Buttons --- */
+    .cta-button {
+      display: inline-block;
+      background-color: var(--botanical-green);
+      color: var(--warm-canvas);
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      box-shadow: 4px 4px 0px var(--dusty-blue);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cta-button:hover {
+      background-color: var(--botanical-dark);
+      transform: translateY(-2px);
+      box-shadow: 6px 6px 0px var(--dusty-blue);
+    }
+
+    /* --- Footer --- */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--botanical-green);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* --- Whimsical Animations --- */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Floating Botanical Elements */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.4;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .blob-1 {
+      width: 300px;
+      height: 300px;
+      background-color: var(--petal-peach);
+      top: -10%;
+      left: -10%;
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background-color: var(--dusty-blue);
+      bottom: -10%;
+      right: -10%;
+      animation-delay: -4s;
+      opacity: 0.3;
+    }
+
+    .blob-3 {
+      width: 200px;
+      height: 200px;
+      background-color: var(--botanical-green);
+      top: 40%;
+      left: 70%;
+      animation-delay: -2s;
+      opacity: 0.15;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-elements">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header>
+    <a href="#" class="brand-logo">wear some flowers</a>
+  </header>
+
+  <main>
+    <h1>Welcome to the Conservatory</h1>
+    <p>A space for whimsical clothing, vintage discoveries, and taking a moment to breathe. Step inside and see how your garden is growing.</p>
+    
+    <a href="#" class="cta-button">Wander Inside</a>
+  </main>
+
+  <footer>
+    <p>Time to enjoy a cup of coffee. ☕</p>
+  </footer>
+
+</body>
+</html>
